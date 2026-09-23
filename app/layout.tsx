@@ -1,0 +1,90 @@
+import type { Metadata, Viewport } from "next";
+import { Anek_Bangla, Plus_Jakarta_Sans, Hind_Siliguri } from "next/font/google";
+import "./globals.css";
+import { CartProvider } from "@/components/providers/CartProvider";
+import { LenisProvider } from "@/components/providers/LenisProvider";
+import { SearchProvider } from "@/components/providers/SearchProvider";
+import { ChatWidget } from "@/components/shared/ChatWidget";
+
+const anekBangla = Anek_Bangla({
+  subsets: ["bengali", "latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-anek",
+  display: "swap",
+});
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-jakarta",
+  display: "swap",
+});
+
+const hindSiliguri = Hind_Siliguri({
+  subsets: ["bengali", "latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-hind",
+  display: "swap",
+});
+
+export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
+  title: {
+    default: "Premium Hatbazar — প্রিমিয়াম সাবস্ক্রিপশন স্টোর",
+    template: "%s — Premium Hatbazar",
+  },
+  description:
+    "ChatGPT, Netflix, Canva, Adobe — ১০০% আসল সাবস্ক্রিপশন। ১০ মিনিটেই ডেলিভারি, পুরো টার্মে রিপ্লেসমেন্ট ওয়ারেন্টি। বিকাশ, নগদ, রকেট, বাইন্যান্স।",
+  applicationName: "Premium Hatbazar",
+  keywords: [
+    "Premium Hatbazar",
+    "premium subscription",
+    "ChatGPT Plus Bangladesh",
+    "Netflix Premium BD",
+    "Canva Pro BD",
+  ],
+  openGraph: {
+    title: "Premium Hatbazar — প্রিমিয়াম সাবস্ক্রিপশন স্টোর",
+    description:
+      "ChatGPT, Netflix, Canva, Adobe — ১০০% আসল সাবস্ক্রিপশন, ১০ মিনিটে ডেলিভারি।",
+    siteName: "Premium Hatbazar",
+    locale: "bn_BD",
+    type: "website",
+  },
+  robots: { index: true, follow: true },
+  formatDetection: { telephone: false, email: false, address: false },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#161826",
+  width: "device-width",
+  initialScale: 1,
+};
+
+import { getCartCookie } from "@/app/actions";
+
+export default async function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  const initialCart = await getCartCookie();
+
+  return (
+    <html
+      lang="bn"
+      className={`${anekBangla.variable} ${plusJakarta.variable} ${hindSiliguri.variable}`}
+    >
+      <body>
+        <LenisProvider>
+          <SearchProvider>
+            <CartProvider initialCart={initialCart}>
+              {children}
+              <ChatWidget />
+            </CartProvider>
+          </SearchProvider>
+        </LenisProvider>
+      </body>
+    </html>
+  );
+}
