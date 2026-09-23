@@ -210,7 +210,7 @@ export function HeroSection({ products }: { products: Product[] }) {
               আজকের ডিল
             </div>
             <div style={{ fontSize: "16px", fontWeight: 600, color: "var(--color-neutral-100)" }}>
-              চ্যাটজিপিটি প্লাস — ১ মাস
+              ChatGPT Plus — ১ মাস
             </div>
             <div style={{ marginTop: 2, fontSize: "12px", fontWeight: 600, color: "var(--color-accent-300)" }}>
               প্রাইভেট মেইল · ইনস্ট্যান্ট ডেলিভারি

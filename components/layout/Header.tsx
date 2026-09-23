@@ -127,7 +127,7 @@ export function Header() {
           />
           <input
             className="input"
-            placeholder="নেটফ্লিক্স, চ্যাটজিপিটি, ক্যানভা…"
+            placeholder="Netflix, ChatGPT, Canva…"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             aria-label="প্রোডাক্ট সার্চ"

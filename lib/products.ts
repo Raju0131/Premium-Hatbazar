@@ -5,7 +5,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "gpt",
     slug: "chatgpt-plus",
-    nameBn: "চ্যাটজিপিটি প্লাস",
+    nameBn: "ChatGPT Plus",
     category: "AI Tools",
     mark: "GPT",
     monthlyPrice: 1150,
@@ -33,7 +33,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "claude",
     slug: "claude-pro",
-    nameBn: "ক্লদ প্রো",
+    nameBn: "Claude Pro",
     category: "AI Tools",
     mark: "CL",
     monthlyPrice: 1250,
@@ -62,7 +62,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "netflix",
     slug: "netflix-premium",
-    nameBn: "নেটফ্লিক্স প্রিমিয়াম",
+    nameBn: "Netflix Premium",
     category: "Streaming",
     mark: "N",
     monthlyPrice: 320,
@@ -90,7 +90,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "yt",
     slug: "youtube-premium",
-    nameBn: "ইউটিউব প্রিমিয়াম",
+    nameBn: "YouTube Premium",
     category: "Streaming",
     mark: "YT",
     monthlyPrice: 190,
@@ -118,7 +118,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "spotify",
     slug: "spotify-premium",
-    nameBn: "স্পটিফাই প্রিমিয়াম",
+    nameBn: "Spotify Premium",
     category: "Streaming",
     mark: "SP",
     monthlyPrice: 150,
@@ -146,7 +146,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "canva",
     slug: "canva-pro",
-    nameBn: "ক্যানভা প্রো",
+    nameBn: "Canva Pro",
     category: "Design",
     mark: "CV",
     monthlyPrice: 145,
@@ -174,7 +174,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "adobe",
     slug: "adobe-creative-cloud",
-    nameBn: "অ্যাডোবি ক্রিয়েটিভ ক্লাউড",
+    nameBn: "Adobe Creative Cloud",
     category: "Design",
     mark: "AD",
     monthlyPrice: 1690,
@@ -202,7 +202,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "grammarly",
     slug: "grammarly-premium",
-    nameBn: "গ্রামারলি প্রিমিয়াম",
+    nameBn: "Grammarly Premium",
     category: "Design",
     mark: "GR",
     monthlyPrice: 320,
@@ -230,7 +230,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "ff",
     slug: "free-fire-diamond",
-    nameBn: "ফ্রি ফায়ার ডায়মন্ড",
+    nameBn: "Free Fire Diamond",
     category: "Gaming",
     mark: "FF",
     monthlyPrice: 85,
@@ -258,7 +258,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "pubg",
     slug: "pubg-mobile-uc",
-    nameBn: "পাবজি মোবাইল UC",
+    nameBn: "PUBG Mobile UC",
     category: "Gaming",
     mark: "UC",
     monthlyPrice: 92,
@@ -286,7 +286,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "steam",
     slug: "steam-gift-card",
-    nameBn: "স্টিম গিফট কার্ড",
+    nameBn: "Steam Gift Card",
     category: "Gift cards",
     mark: "ST",
     monthlyPrice: 1450,
@@ -314,7 +314,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "gplay",
     slug: "google-play-gift-card",
-    nameBn: "গুগল প্লে গিফট কার্ড",
+    nameBn: "Google Play Gift Card",
     category: "Gift cards",
     mark: "GP",
     monthlyPrice: 1380,

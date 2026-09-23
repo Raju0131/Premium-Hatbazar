@@ -111,8 +111,8 @@ export function ProductForm({ product }: { product?: Product }) {
     <form onSubmit={submit} style={{ display: "grid", gap: 22, maxWidth: 720 }}>
       <div className="card" style={{ gap: 14, padding: 22, border: "1px solid var(--color-neutral-800)" }}>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
-          <Field label="নাম (Bengali)">
-            <input className="input" value={f.nameBn} onChange={set("nameBn")} placeholder="চ্যাটজিপিটি প্লাস" />
+          <Field label="নাম">
+            <input className="input" value={f.nameBn} onChange={set("nameBn")} placeholder="ChatGPT Plus" />
           </Field>
           <Field label="Slug" hint="URL-এ যাবে, ইউনিক">
             <input className="input" value={f.slug} onChange={set("slug")} placeholder="chatgpt-plus" />
