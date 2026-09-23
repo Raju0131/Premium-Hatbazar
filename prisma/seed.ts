@@ -27,6 +27,7 @@ async function main() {
         specs: p.specs as any,
         includes: p.includes,
         wasPrice: p.wasPrice,
+        imageUrl: p.imageUrl,
       },
     });
     console.log(`Created product with id: ${product.id}`);

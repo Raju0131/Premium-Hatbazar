@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { bnNum } from "@/lib/bn";
+import { productIconUrl } from "@/lib/productImage";
 import { ACTIVITY_DATA, type Product } from "@/lib/types";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
 
@@ -16,6 +17,7 @@ export function HeroSection({ products }: { products: Product[] }) {
 
   const activity = ACTIVITY_DATA[tick];
   const bySlug = (s: string) => products.find((p) => p.slug === s);
+  const deal = bySlug("chatgpt-plus");
   const heroPicks = [bySlug("netflix-premium"), bySlug("canva-pro")].filter(
     (p): p is Product => Boolean(p)
   );
@@ -183,13 +185,19 @@ export function HeroSection({ products }: { products: Product[] }) {
               height: 48,
               flexShrink: 0,
               borderRadius: 11,
+              overflow: "hidden",
               background: "var(--color-bg)",
               fontSize: "14px",
               fontWeight: 600,
               color: "var(--color-accent-400)",
             }}
           >
-            GPT
+            {deal?.imageUrl ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={productIconUrl(deal.imageUrl)} alt={deal.nameBn} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            ) : (
+              "GPT"
+            )}
           </span>
           <div style={{ flex: 1, minWidth: 0 }}>
             <div
@@ -272,7 +280,7 @@ export function HeroSection({ products }: { products: Product[] }) {
               >
                 {p.imageUrl ? (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img src={p.imageUrl} alt={p.nameBn} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                  <img src={productIconUrl(p.imageUrl)} alt={p.nameBn} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 ) : (
                   p.mark
                 )}

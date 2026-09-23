@@ -52,8 +52,19 @@ Visit `http://localhost:3000/admin`:
 
 ### Product images
 Images are stored as URLs on `Product.imageUrl` and rendered on the catalogue cards (with a
-gradient/mark placeholder when unset). Host the image anywhere over **https**, then set it in the
-admin Products editor, or directly in SQL:
+gradient/mark placeholder when unset).
+
+The 12 catalogue products use images bundled in `public/products/`, served by Vercel with a
+one-year browser cache (see `next.config.ts`). Each product has two files that share a content hash:
+
+- `<slug>.<hash>.webp` — 1280px banner for the catalogue card (`imageUrl` points here)
+- `<slug>.<hash>-icon.webp` — 192px square logo crop, used automatically for the small thumbnails
+
+When replacing a bundled image, add new files with a new hash (never overwrite an existing file,
+or browsers will keep showing the cached one) and update `imageUrl`.
+
+You can also host an image anywhere over **https** and set its URL in the admin Products editor,
+or directly in SQL:
 
 ```sql
 UPDATE "Product" SET "imageUrl" = 'https://your-host.com/canva.png' WHERE slug = 'canva-pro';

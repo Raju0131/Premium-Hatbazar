@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getProducts } from "@/lib/queries";
 import { bnNum } from "@/lib/bn";
+import { productIconUrl } from "@/lib/productImage";
 import { DeleteProductButton } from "@/components/admin/DeleteProductButton";
 
 export const dynamic = "force-dynamic";
@@ -49,7 +50,7 @@ export default async function AdminProducts() {
                     <span style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 34, height: 34, flexShrink: 0, borderRadius: 8, overflow: "hidden", background: "var(--color-neutral-900)", fontSize: "11px", fontWeight: 600, color: "var(--color-neutral-300)" }}>
                       {p.imageUrl ? (
                         // eslint-disable-next-line @next/next/no-img-element
-                        <img src={p.imageUrl} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                        <img src={productIconUrl(p.imageUrl)} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                       ) : (
                         p.mark
                       )}

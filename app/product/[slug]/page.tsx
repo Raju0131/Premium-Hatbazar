@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getProductBySlug } from "@/lib/products";
 import { getProduct } from "@/lib/queries";
+import { productIconUrl } from "@/lib/productImage";
 import { SaleStrip } from "@/components/layout/SaleStrip";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -51,7 +52,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               <span style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 64, height: 64, flexShrink: 0, borderRadius: 14, overflow: "hidden", background: "var(--color-bg)", fontSize: "18px", fontWeight: 600, color: "var(--color-accent-400)" }}>
                 {product.imageUrl ? (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img src={product.imageUrl} alt={product.nameBn} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                  <img src={productIconUrl(product.imageUrl)} alt={product.nameBn} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 ) : (
                   product.mark
                 )}
