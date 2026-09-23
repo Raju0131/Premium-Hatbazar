@@ -9,7 +9,7 @@ export function Toast() {
 
   return (
     <div
-      className="animate-pv-toast"
+      className="animate-ph-toast"
       style={{
         position: "fixed",
         right: 20,

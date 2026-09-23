@@ -70,7 +70,7 @@ export default function CheckoutPage() {
       <div style={{ minHeight: "100vh", background: "var(--color-bg)", fontFamily: "var(--font-body)", color: "var(--color-text)" }}>
         <SaleStrip />
         <Header />
-        <main className="animate-pv-in" style={{ width: "min(1240px, calc(100% - 32px))", margin: "0 auto", padding: "60px 0 72px", textAlign: "center" }}>
+        <main className="animate-ph-in" style={{ width: "min(1240px, calc(100% - 32px))", margin: "0 auto", padding: "60px 0 72px", textAlign: "center" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 56, height: 56, margin: "0 auto", borderRadius: "50%", background: "var(--color-accent-500)" }}>
             <Check weight="bold" size={24} color="var(--color-bg)" />
           </div>
@@ -101,7 +101,7 @@ export default function CheckoutPage() {
       <SaleStrip />
       <Header />
 
-      <main className="animate-pv-in" style={{ width: "min(1240px, calc(100% - 32px))", margin: "0 auto", padding: "26px 0 72px" }}>
+      <main className="animate-ph-in" style={{ width: "min(1240px, calc(100% - 32px))", margin: "0 auto", padding: "26px 0 72px" }}>
         <Link href="/#catalogue" style={{ fontSize: "12.5px", fontWeight: 600, color: "var(--color-neutral-500)" }}>
           ← শপিং চালিয়ে যান
         </Link>

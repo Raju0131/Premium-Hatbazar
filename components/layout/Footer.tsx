@@ -134,7 +134,7 @@ export function Footer() {
           </div>
           <div style={{ display: "grid", gap: 9, marginTop: 12, fontSize: "13px", fontWeight: 600 }}>
             <span style={{ color: "var(--color-neutral-400)" }}>+৮৮০ ১৩১৫ ১৫২০০৫</span>
-            <span style={{ color: "var(--color-neutral-400)" }}>hello@primevault.bd</span>
+            <span style={{ color: "var(--color-neutral-400)" }}>hello@premiumhatbazar.bd</span>
             <span style={{ color: "var(--color-neutral-400)" }}>সিলেট, বাংলাদেশ</span>
             <span style={{ color: "var(--color-neutral-400)" }}>২৪/৭ হোয়াটসঅ্যাপ</span>
           </div>

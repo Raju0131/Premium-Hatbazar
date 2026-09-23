@@ -33,7 +33,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       <SaleStrip />
       <Header />
 
-      <main className="animate-pv-in" style={{ width: "min(1240px, calc(100% - 32px))", margin: "0 auto", padding: "26px 0 72px" }}>
+      <main className="animate-ph-in" style={{ width: "min(1240px, calc(100% - 32px))", margin: "0 auto", padding: "26px 0 72px" }}>
         {/* Breadcrumb */}
         <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: "12.5px", fontWeight: 600, color: "var(--color-neutral-600)" }}>
           <Link href="/#catalogue" style={{ color: "var(--color-neutral-500)" }}>প্রোডাক্ট</Link>

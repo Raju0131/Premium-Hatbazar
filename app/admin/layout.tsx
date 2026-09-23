@@ -14,7 +14,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </aside>
 
         {/* Main Content */}
-        <main className="animate-pv-in" style={{ flex: 1, minWidth: 0, padding: "32px 40px" }}>
+        <main className="animate-ph-in" style={{ flex: 1, minWidth: 0, padding: "32px 40px" }}>
           {children}
         </main>
       </div>

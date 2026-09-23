@@ -17,7 +17,7 @@ export function SaleStrip() {
       }}
     >
       <span
-        className="animate-pv-pulse"
+        className="animate-ph-pulse"
         style={{
           width: 6,
           height: 6,

@@ -59,9 +59,9 @@ export async function submitOrder(data: {
     unitPrice: i.unitPrice,
   }));
 
-  // orderId is a short human-readable code (PV-XXXX) and @unique — retry on the rare collision.
+  // orderId is a short human-readable code (PH-XXXX) and @unique — retry on the rare collision.
   for (let attempt = 0; attempt < 5; attempt++) {
-    const orderId = "PV-" + Math.floor(1000 + Math.random() * 9000);
+    const orderId = "PH-" + Math.floor(1000 + Math.random() * 9000);
     try {
       const order = await prisma.order.create({
         data: {

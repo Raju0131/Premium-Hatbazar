@@ -205,7 +205,7 @@ export function Header() {
           onClick={() => setMenuOpen((o) => !o)}
           aria-label={menuOpen ? "মেনু বন্ধ করুন" : "মেনু খুলুন"}
           aria-expanded={menuOpen}
-          aria-controls="pv-mobile-drawer"
+          aria-controls="ph-mobile-drawer"
           style={{
             display: "none",
             alignItems: "center",
@@ -227,9 +227,9 @@ export function Header() {
       {/* Mobile drawer */}
       {menuOpen && (
         <div
-          id="pv-mobile-drawer"
+          id="ph-mobile-drawer"
           ref={drawerRef}
-          className="animate-pv-in"
+          className="animate-ph-in"
           style={{
             padding: "6px 16px 16px",
             borderTop: "1px solid var(--color-divider)",

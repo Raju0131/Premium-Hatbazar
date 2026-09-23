@@ -41,7 +41,7 @@ export function ChatWidget() {
     <>
       {open && (
         <div
-          className="animate-pv-in"
+          className="animate-ph-in"
           role="dialog"
           aria-label="সাপোর্ট চ্যাট"
           style={{

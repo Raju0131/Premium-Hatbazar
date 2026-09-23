@@ -61,7 +61,7 @@ export function CartPanel() {
       {/* Panel */}
       <aside
         ref={panelRef}
-        className="resp-cartpanel animate-pv-in"
+        className="resp-cartpanel animate-ph-in"
         style={{
           position: "fixed",
           top: 0,

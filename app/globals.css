@@ -236,7 +236,7 @@ a:focus-visible {
 }
 
 /* ── Keyframes (from mockup) ── */
-@keyframes pv-in {
+@keyframes ph-in {
   from {
     opacity: 0;
     transform: translateY(10px);
@@ -246,7 +246,7 @@ a:focus-visible {
     transform: none;
   }
 }
-@keyframes pv-toast {
+@keyframes ph-toast {
   from {
     opacity: 0;
     transform: translateY(14px);
@@ -256,7 +256,7 @@ a:focus-visible {
     transform: none;
   }
 }
-@keyframes pv-pulse {
+@keyframes ph-pulse {
   0%,
   100% {
     opacity: 1;
@@ -266,14 +266,14 @@ a:focus-visible {
   }
 }
 
-.animate-pv-in {
-  animation: pv-in 0.28s ease both;
+.animate-ph-in {
+  animation: ph-in 0.28s ease both;
 }
-.animate-pv-toast {
-  animation: pv-toast 0.24s ease both;
+.animate-ph-toast {
+  animation: ph-toast 0.24s ease both;
 }
-.animate-pv-pulse {
-  animation: pv-pulse 2s ease-in-out infinite;
+.animate-ph-pulse {
+  animation: ph-pulse 2s ease-in-out infinite;
 }
 
 /* ── Responsive breakpoints (from mockup) ── */

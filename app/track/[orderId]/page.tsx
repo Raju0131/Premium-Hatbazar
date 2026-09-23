@@ -42,7 +42,7 @@ export default function TrackPage({ params }: { params: Promise<{ orderId: strin
     }
   }, []);
 
-  // Auto-track when landed on /track/PV-XXXX (skip the bare /track/search entry point).
+  // Auto-track when landed on /track/PH-XXXX (skip the bare /track/search entry point).
   useEffect(() => {
     if (orderId && orderId !== "search") {
       handleTrack(orderId);
@@ -56,7 +56,7 @@ export default function TrackPage({ params }: { params: Promise<{ orderId: strin
       <SaleStrip />
       <Header />
 
-      <main className="animate-pv-in" style={{ width: "min(1240px, calc(100% - 32px))", margin: "0 auto", padding: "26px 0 72px" }}>
+      <main className="animate-ph-in" style={{ width: "min(1240px, calc(100% - 32px))", margin: "0 auto", padding: "26px 0 72px" }}>
         <div className="resp-col2" style={{ display: "grid", gridTemplateColumns: "minmax(0,1.16fr) minmax(0,.84fr)", gap: 36, alignItems: "start" }}>
           <div>
             <h1 className="resp-h1" style={{ margin: 0, fontFamily: "inherit", fontSize: 44, letterSpacing: "-0.045em", color: "var(--color-neutral-100)" }}>
@@ -66,7 +66,7 @@ export default function TrackPage({ params }: { params: Promise<{ orderId: strin
               অর্ডার আইডি দিলেই লাইভ স্ট্যাটাস দেখবেন। হোয়াটসঅ্যাপেও আপডেট পাঠাই।
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 9, marginTop: 22, maxWidth: 440 }}>
-              <input className="input" placeholder="PV-8241" value={trackId} onChange={(e) => setTrackId(e.target.value)} style={{ flex: 1, minWidth: 170, height: 44, fontWeight: 600 }} />
+              <input className="input" placeholder="PH-8241" value={trackId} onChange={(e) => setTrackId(e.target.value)} style={{ flex: 1, minWidth: 170, height: 44, fontWeight: 600 }} />
               <button disabled={loading} onClick={() => handleTrack(trackId)} style={{ height: 44, padding: "0 20px", whiteSpace: "nowrap", border: "1px solid var(--color-accent-800)", borderRadius: 9, background: "transparent", fontFamily: "inherit", fontSize: "13.5px", fontWeight: 600, color: "var(--color-accent-300)", cursor: loading ? "not-allowed" : "pointer" }}>
                 {loading ? "..." : "ট্র্যাক"}
               </button>
@@ -80,7 +80,7 @@ export default function TrackPage({ params }: { params: Promise<{ orderId: strin
                     <div style={{ marginTop: 5, fontSize: 22, fontWeight: 600, letterSpacing: "-0.02em", color: "var(--color-neutral-100)" }}>{trackId}</div>
                   </div>
                   <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 13px", borderRadius: 20, background: "var(--color-accent-900)", border: "1px solid var(--color-accent-800)" }}>
-                    {status !== "DELIVERED" && status !== "CANCELLED" && <span className="animate-pv-pulse" style={{ width: 7, height: 7, borderRadius: "50%", background: "var(--color-accent-400)" }} />}
+                    {status !== "DELIVERED" && status !== "CANCELLED" && <span className="animate-ph-pulse" style={{ width: 7, height: 7, borderRadius: "50%", background: "var(--color-accent-400)" }} />}
                     <span style={{ fontSize: "12.5px", fontWeight: 700, color: "var(--color-accent-200)" }}>{status || "Not Found"}</span>
                   </div>
                 </div>

@@ -161,7 +161,7 @@ export function HeroSection({ products }: { products: Product[] }) {
       >
         {/* Deal row */}
         <div
-          className="resp-dealrow animate-pv-in"
+          className="resp-dealrow animate-ph-in"
           style={{
             gridColumn: "1 / -1",
             animationDelay: "0.02s",
@@ -239,7 +239,7 @@ export function HeroSection({ products }: { products: Product[] }) {
           <Link
             key={p.id}
             href={`/product/${p.slug}`}
-            className="animate-pv-in"
+            className="animate-ph-in"
             style={{
               display: "block",
               animationDelay: `${0.12 + i * 0.09}s`,
@@ -310,7 +310,7 @@ export function HeroSection({ products }: { products: Product[] }) {
             }}
           >
             <span
-              className="animate-pv-pulse"
+              className="animate-ph-pulse"
               style={{
                 width: 7,
                 height: 7,
