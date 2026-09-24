@@ -5,9 +5,12 @@ This is the fully implemented Premium Hatbazar eCommerce frontend + backend inte
 ## Features Built
 - Full pixel-perfect UI reproduction with Tailwind v4 & custom Google Fonts.
 - Smooth scrolling (Lenis) & Scroll-triggered reveals (GSAP).
-- Server-persisted shopping cart using Next.js Cookies & Server Actions.
+- Shopping cart saved in the browser (localStorage), so the storefront pages can be prerendered.
 - Dynamic term-based pricing calculator.
-- Database integration using **Prisma + PostgreSQL** to store Orders, Products, and OrderItems.
+- Database integration using **Prisma + PostgreSQL** to store Products, Orders, OrderItems and
+  customer Messages.
+- Home and product pages are prerendered and served from the CDN, refreshed every 5 minutes and
+  right after admin edits.
 
 ## Local Setup
 
@@ -15,6 +18,7 @@ This is the fully implemented Premium Hatbazar eCommerce frontend + backend inte
 ```bash
 npm install
 ```
+This also generates the Prisma client.
 
 ### 2. Configure Database
 By default, the project expects a PostgreSQL database (like Neon or Supabase).
@@ -29,6 +33,10 @@ npx prisma db push
 npm run seed
 ```
 *The seed script reads from `lib/products.ts` and loads all products into the database.*
+
+> **Careful:** `npm run seed` deletes every product and re-creates them from `lib/products.ts`.
+> Don't run it against the live database once products have been edited in the admin; it also
+> fails as soon as any order references a product.
 
 ### 4. Run Development Server
 ```bash
@@ -45,6 +53,7 @@ Visit `http://localhost:3000/admin`:
   `/track/<id>` timeline.
 - **Products** (`/admin/products`) — full CRUD: add / edit / delete products, and set price,
   stock, badge, and the product **image URL**.
+- **Messages** (`/admin/messages`) — messages customers send from the site's chat widget.
 
 ### Protecting the admin
 `/admin` is open in local dev. Before deploying, set `ADMIN_PASSWORD` (and optionally
@@ -71,6 +80,21 @@ or directly in SQL:
 ```sql
 UPDATE "Product" SET "imageUrl" = 'https://your-host.com/canva.png' WHERE slug = 'canva-pro';
 ```
+
+Changes made directly in the database show up on the storefront within about 5 minutes; edits
+made through the admin show up immediately.
+
+## Deploying to Vercel
+1. Import the repository in Vercel (framework preset: Next.js). The build runs `prisma generate`
+   itself, so no extra build settings are needed.
+2. In **Settings → Environment Variables**, add:
+   - `DATABASE_URL` — the Neon connection string (Neon dashboard → **Connect**, with connection
+     pooling on).
+   - `ADMIN_PASSWORD` — protects `/admin`. Optionally `ADMIN_USER` (default `admin`).
+3. Redeploy after adding or changing a variable; variables only apply to new deployments.
+
+The home and product pages are prerendered during the build (reading products from the database)
+and refreshed in the background at most every 5 minutes.
 
 ## Tech Stack
 - Next.js (App Router)
