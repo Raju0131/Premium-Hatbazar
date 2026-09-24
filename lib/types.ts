@@ -84,7 +84,6 @@ export const PAYMENT_METHODS = [
   { key: "bkash", name: "বিকাশ", sub: "সেন্ড মানি", num: "০১৩১৫ ১৫২০০৫" },
   { key: "nagad", name: "নগদ", sub: "সেন্ড মানি", num: "০১৩১৫ ১৫২০০৫" },
   { key: "rocket", name: "রকেট", sub: "সেন্ড মানি", num: "০১৩১৫১৫২০০৫১" },
-  { key: "binance", name: "বাইন্যান্স", sub: "USDT · TRC20", num: "TQm4xP…9vLk" },
 ] as const;
 
 export const FAQ_DATA = [
@@ -102,7 +101,7 @@ export const FAQ_DATA = [
   },
   {
     q: "পেমেন্ট কিভাবে করব?",
-    a: "bKash, Nagad, Rocket-এ সেন্ড মানি করুন, নয়তো Binance-এ USDT। চেকআউটে ট্রানজেকশন আইডি বসিয়ে দিন — ব্যাস।",
+    a: "bKash, Nagad বা Rocket-এ সেন্ড মানি করুন। চেকআউটে ট্রানজেকশন আইডি বসিয়ে দিন — ব্যাস।",
   },
   {
     q: "রিফান্ড পাওয়া যাবে?",

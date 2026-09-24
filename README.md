@@ -22,7 +22,7 @@ order tracking and an admin panel in one Next.js codebase.**
 ## Overview
 
 Customers in Bangladesh browse AI tools, streaming, design, gaming and gift-card products, pick a
-1, 3 or 12-month term, pay with bKash, Nagad, Rocket or Binance, and follow their order on a
+1, 3 or 12-month term, pay with bKash, Nagad or Rocket, and follow their order on a
 tracking page. The store owner verifies payments, moves orders through their statuses and manages
 the catalogue from a password-protected admin panel. The interface is in Bengali, with Bengali
 numerals for prices.
@@ -43,7 +43,7 @@ numerals for prices.
 | :---: | :---: |
 | <img src="docs/screenshots/catalogue.webp" alt="Catalogue with category filters and term switcher" width="100%"> | <img src="docs/screenshots/product.webp" alt="Product page with term-based pricing" width="100%"> |
 | **Checkout** | **Admin — product catalogue** |
-| <img src="docs/screenshots/checkout.webp" alt="Checkout with bKash, Nagad, Rocket and Binance" width="100%"> | <img src="docs/screenshots/admin-products.webp" alt="Admin product catalogue" width="100%"> |
+| <img src="docs/screenshots/checkout.webp" alt="Checkout with bKash, Nagad and Rocket" width="100%"> | <img src="docs/screenshots/admin-products.webp" alt="Admin product catalogue" width="100%"> |
 
 <p align="center">
   <img src="docs/screenshots/mobile.webp" alt="Home, catalogue and product page on a phone" width="90%">
@@ -58,9 +58,9 @@ numerals for prices.
 - **Term-based pricing** — 1, 3 or 12 months with 10% and 22% discounts, rounded to the nearest
   5 taka (`lib/price.ts`); one-time top-ups such as game currency skip the term.
 - **Cart** kept in the browser, with quantities and a slide-in cart panel.
-- **Checkout** with bKash, Nagad and Rocket (Send Money) or Binance (USDT · TRC20); the customer
-  enters the transaction ID and gets a short order ID such as `PH-4821` (unique, retried on the
-  rare collision).
+- **Checkout** with bKash, Nagad or Rocket (Send Money); the customer enters the transaction ID
+  and gets a short order ID such as `PH-4821` (unique, retried on the rare collision). The server
+  only accepts the payment methods listed in `lib/types.ts`.
 - **Order tracking** at `/track/<order id>` with a four-step timeline: order received → payment
   verified → account ready → delivered.
 - **Chat widget** — customer messages land in the admin inbox.

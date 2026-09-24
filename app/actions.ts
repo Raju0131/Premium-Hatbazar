@@ -1,7 +1,7 @@
 "use server"
 
 import { revalidatePath } from "next/cache"
-import { CartItem } from "@/lib/types"
+import { CartItem, PAYMENT_METHODS } from "@/lib/types"
 import { Prisma, OrderStatus } from "@prisma/client"
 import { prisma } from "@/lib/prisma"
 
@@ -14,6 +14,9 @@ export async function submitOrder(data: {
   items: CartItem[];
 }) {
   if (data.items.length === 0) throw new Error("Cart is empty");
+  if (!PAYMENT_METHODS.some((m) => m.key === data.paymentMethod)) {
+    throw new Error("Unknown payment method");
+  }
 
   // Gross = pre-discount. One-time top-ups have no term, so their unitPrice IS the gross.
   const grossSubtotal = data.items.reduce(

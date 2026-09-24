@@ -62,7 +62,7 @@ export function Footer() {
             বাংলাদেশের প্রিমিয়াম সাবস্ক্রিপশন স্টোর।
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 7, marginTop: 14 }}>
-            {["বিকাশ", "নগদ", "রকেট", "বাইন্যান্স"].map((m) => (
+            {["বিকাশ", "নগদ", "রকেট"].map((m) => (
               <span
                 key={m}
                 style={{
