@@ -117,7 +117,7 @@ export default function TrackPage({ params }: { params: Promise<{ orderId: strin
 
           {/* Help card */}
           <div className="card" style={{ gap: 0, padding: 22, border: "1px solid var(--color-neutral-800)" }}>
-            <h3 style={{ margin: 0, fontFamily: "inherit", fontSize: "17px", fontWeight: 600, color: "var(--color-neutral-100)" }}>দেরি হচ্ছে?</h3>
+            <h2 style={{ margin: 0, fontFamily: "inherit", fontSize: "17px", fontWeight: 600, color: "var(--color-neutral-100)" }}>দেরি হচ্ছে?</h2>
             <p style={{ marginTop: 9, fontFamily: "var(--font-body)", fontSize: "14.5px", lineHeight: 1.7, color: "var(--color-neutral-400)" }}>
               বেশিরভাগ অর্ডার ১০ মিনিটে হয়ে যায়। রাশ আওয়ারে ৩০ মিনিট পর্যন্ত লাগতে পারে। ১ ঘণ্টা পেরিয়ে গেলে সরাসরি হোয়াটসঅ্যাপ করুন — অর্ডার আইডিটা সাথে দিন।
             </p>

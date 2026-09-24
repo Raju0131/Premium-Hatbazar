@@ -5,12 +5,20 @@ import {
   useContext,
   useReducer,
   useEffect,
+  useRef,
   useCallback,
   type ReactNode,
 } from "react";
 import type { CartItem, Product } from "@/lib/types";
 import { calcPrice, getTerm } from "@/lib/price";
-import { setCartCookie } from "@/app/actions";
+
+/**
+ * The cart lives in localStorage rather than a server cookie: reading a cookie
+ * in the root layout forced every page to render per request, while keeping
+ * it client-side lets the storefront pages be prerendered and served from the
+ * CDN (and skips a server round trip on every page view).
+ */
+const STORAGE_KEY = "ph-cart";
 
 /* ── State ── */
 interface CartState {
@@ -118,17 +126,28 @@ interface CartContextValue {
 
 const CartContext = createContext<CartContextValue | null>(null);
 
-export function CartProvider({ children, initialCart = [] }: { children: ReactNode, initialCart?: CartItem[] }) {
+export function CartProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(reducer, {
-    items: initialCart,
+    items: [],
     isOpen: false,
     toast: null,
   });
 
-  /* Persist */
+  /* Restore the saved cart on first mount, then persist every change. */
+  const restored = useRef(false);
   useEffect(() => {
+    if (!restored.current) {
+      restored.current = true;
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "[]");
+        if (Array.isArray(saved) && saved.length > 0) dispatch({ type: "HYDRATE", items: saved });
+      } catch {
+        /* storage unavailable or corrupt: start with an empty cart */
+      }
+      return;
+    }
     try {
-      setCartCookie(state.items);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state.items));
     } catch {
       /* ignore */
     }

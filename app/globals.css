@@ -12,7 +12,7 @@
   --color-neutral-300: #cfd3e5;
   --color-neutral-400: #b2b6ca;
   --color-neutral-500: #9397ab;
-  --color-neutral-600: #75798c;
+  --color-neutral-600: #8f93a6; /* lightened from #75798c: small text needs 4.5:1 on bg, surface and neutral-900 */
   --color-neutral-700: #595d6c;
   --color-neutral-800: #3f424d;
   --color-neutral-900: #292b31;
@@ -45,8 +45,8 @@
   --shadow-lg: 0 0 0 1px #9397ab, 0 16px 40px rgba(0, 0, 0, 0.65);
 
   /* ── Fonts ── */
-  --font-heading: "Anek Bangla", "Plus Jakarta Sans", system-ui, sans-serif;
-  --font-body: "Anek Bangla", "Hind Siliguri", system-ui, sans-serif;
+  --font-heading: "Anek Bangla", system-ui, sans-serif;
+  --font-body: "Anek Bangla", system-ui, sans-serif;
 }
 
 /* ── Base ── */
@@ -347,6 +347,16 @@ a:focus-visible {
   }
   .resp-saletext {
     display: none !important;
+  }
+  /* Hidden on small screens but still read by screen readers. */
+  .resp-srtext {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
   }
   .resp-dealrow {
     flex-wrap: wrap;

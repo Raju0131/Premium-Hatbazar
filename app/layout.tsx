@@ -1,29 +1,19 @@
 import type { Metadata, Viewport } from "next";
-import { Anek_Bangla, Plus_Jakarta_Sans, Hind_Siliguri } from "next/font/google";
+import { Anek_Bangla } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/components/providers/CartProvider";
 import { LenisProvider } from "@/components/providers/LenisProvider";
 import { SearchProvider } from "@/components/providers/SearchProvider";
 import { ChatWidget } from "@/components/shared/ChatWidget";
 
+// Anek Bangla covers both the Bengali and Latin text on every page. It used to
+// be paired with Plus Jakarta Sans and Hind Siliguri as fallbacks, but no glyph
+// ever rendered with them while their ~250 KB of preloaded files held up the
+// first paint on mobile, so they were dropped.
 const anekBangla = Anek_Bangla({
   subsets: ["bengali", "latin"],
   weight: ["400", "500", "600", "700", "800"],
   variable: "--font-anek",
-  display: "swap",
-});
-
-const plusJakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-jakarta",
-  display: "swap",
-});
-
-const hindSiliguri = Hind_Siliguri({
-  subsets: ["bengali", "latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-hind",
   display: "swap",
 });
 
@@ -61,24 +51,20 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-import { getCartCookie } from "@/app/actions";
-
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const initialCart = await getCartCookie();
-
   return (
     <html
       lang="bn"
-      className={`${anekBangla.variable} ${plusJakarta.variable} ${hindSiliguri.variable}`}
+      className={anekBangla.variable}
     >
       <body>
         <LenisProvider>
           <SearchProvider>
-            <CartProvider initialCart={initialCart}>
+            <CartProvider>
               {children}
               <ChatWidget />
             </CartProvider>

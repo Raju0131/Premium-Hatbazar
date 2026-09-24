@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getProductBySlug } from "@/lib/products";
+import { PRODUCTS, getProductBySlug } from "@/lib/products";
 import { getProduct } from "@/lib/queries";
 import { productIconUrl } from "@/lib/productImage";
 import { SaleStrip } from "@/components/layout/SaleStrip";
@@ -11,8 +11,14 @@ import { Toast } from "@/components/shared/Toast";
 import { BuyBox } from "@/components/product/BuyBox";
 import { CheckCircle } from "@phosphor-icons/react/dist/ssr";
 
-// Product content comes from the DB per request (admin edits reflect immediately).
-export const dynamic = "force-dynamic";
+// Prerendered per product and served from the CDN; content is re-read from the
+// DB in the background at most every 5 minutes, and immediately after an admin
+// edit. Products added later in the admin are rendered on their first visit.
+export const revalidate = 300;
+
+export function generateStaticParams() {
+  return PRODUCTS.map((p) => ({ slug: p.slug }));
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -83,9 +89,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             </div>
 
             {/* Includes */}
-            <h3 style={{ marginTop: 30, fontFamily: "inherit", fontSize: 19, letterSpacing: "-0.025em", color: "var(--color-neutral-100)" }}>
+            <h2 style={{ marginTop: 30, fontFamily: "inherit", fontSize: 19, letterSpacing: "-0.025em", color: "var(--color-neutral-100)" }}>
               কী কী থাকবে
-            </h3>
+            </h2>
             <div style={{ display: "grid", gap: 9, marginTop: 12 }}>
               {product.includes.map((item, i) => (
                 <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>

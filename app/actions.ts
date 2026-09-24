@@ -1,36 +1,7 @@
 "use server"
 
-import { cookies } from "next/headers"
 import { revalidatePath } from "next/cache"
 import { CartItem } from "@/lib/types"
-
-export async function getCartCookie(): Promise<CartItem[]> {
-  const cookieStore = await cookies()
-  const cartData = cookieStore.get("cart")
-  if (!cartData) return []
-  try {
-    return JSON.parse(cartData.value) as CartItem[]
-  } catch {
-    return []
-  }
-}
-
-export async function setCartCookie(cart: CartItem[]) {
-  const cookieStore = await cookies()
-  cookieStore.set("cart", JSON.stringify(cart), {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    path: "/",
-    maxAge: 60 * 60 * 24 * 7 // 1 week
-  })
-}
-
-export async function clearCartCookie() {
-  const cookieStore = await cookies()
-  cookieStore.delete("cart")
-}
-
 import { Prisma, OrderStatus } from "@prisma/client"
 import { prisma } from "@/lib/prisma"
 
@@ -77,7 +48,6 @@ export async function submitOrder(data: {
           items: { create: itemsData },
         },
       });
-      await clearCartCookie();
       return order.orderId;
     } catch (e) {
       if (

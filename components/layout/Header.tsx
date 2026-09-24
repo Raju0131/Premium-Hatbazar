@@ -160,7 +160,6 @@ export function Header() {
         {/* Cart button */}
         <button
           onClick={openCart}
-          aria-label="কার্ট দেখুন"
           style={{
             display: "inline-flex",
             alignItems: "center",
@@ -179,7 +178,7 @@ export function Header() {
           }}
         >
           <ShoppingBag weight="bold" size={15} />
-          <span className="resp-saletext">কার্ট</span>
+          <span className="resp-srtext">কার্ট</span>
           <span
             style={{
               display: "flex",

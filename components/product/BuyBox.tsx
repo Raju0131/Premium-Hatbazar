@@ -1,10 +1,9 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { useCart } from "@/components/providers/CartProvider";
 import { TERMS, calcPrice } from "@/lib/price";
 import { bnNum } from "@/lib/bn";
-import gsap from "gsap";
 import type { Product } from "@/lib/types";
 
 export function BuyBox({ product }: { product: Product }) {
@@ -15,26 +14,6 @@ export function BuyBox({ product }: { product: Product }) {
   const hasDiscount = !product.isOneTime && term.discountPercent > 0;
   const basePrice = product.monthlyPrice * term.months;
   const savings = basePrice - price;
-  
-  const priceRef = useRef<HTMLDivElement>(null);
-  
-  useEffect(() => {
-    if (priceRef.current) {
-      const currentVal = parseFloat(priceRef.current.dataset.val || price.toString());
-      const obj = { val: currentVal };
-      gsap.to(obj, {
-        val: price,
-        duration: 0.4,
-        ease: "power2.out",
-        onUpdate: () => {
-          if (priceRef.current) {
-            priceRef.current.textContent = `৳${bnNum(Math.round(obj.val))}`;
-            priceRef.current.dataset.val = obj.val.toString();
-          }
-        }
-      });
-    }
-  }, [price]);
 
   const perMonth = product.isOneTime
     ? "এক বারের টপ-আপ"
@@ -85,7 +64,7 @@ export function BuyBox({ product }: { product: Product }) {
 
       <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 12, marginTop: 20 }}>
         <div>
-          <div ref={priceRef} data-val={price} style={{ fontSize: 38, fontWeight: 600, letterSpacing: "-0.04em", color: "var(--color-neutral-100)" }}>
+          <div style={{ fontSize: 38, fontWeight: 600, letterSpacing: "-0.04em", color: "var(--color-neutral-100)" }}>
             ৳{bnNum(price)}
           </div>
           <div style={{ marginTop: 6, fontSize: "12.5px", fontWeight: 600, color: "var(--color-neutral-500)" }}>

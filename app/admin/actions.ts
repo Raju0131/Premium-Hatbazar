@@ -74,7 +74,8 @@ export async function updateProduct(id: string, data: ProductFormData) {
   revalidatePath("/admin/products");
   revalidatePath(`/admin/products/${id}`);
   revalidatePath("/");
-  revalidatePath(`/product/${data.slug}`);
+  // Every product page, so a renamed slug doesn't leave its old page cached.
+  revalidatePath("/product/[slug]", "page");
 }
 
 export async function deleteProduct(id: string): Promise<{ ok: boolean; error?: string }> {
@@ -88,5 +89,6 @@ export async function deleteProduct(id: string): Promise<{ ok: boolean; error?: 
   }
   revalidatePath("/admin/products");
   revalidatePath("/");
+  revalidatePath("/product/[slug]", "page");
   return { ok: true };
 }

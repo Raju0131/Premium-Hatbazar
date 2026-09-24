@@ -5,6 +5,7 @@ import Link from "next/link";
 import { CATEGORIES, type Product } from "@/lib/types";
 import { TERMS, calcPrice } from "@/lib/price";
 import { bnNum } from "@/lib/bn";
+import { productImageSrcSet } from "@/lib/productImage";
 import { useCart } from "@/components/providers/CartProvider";
 import { useSearch } from "@/components/providers/SearchProvider";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
@@ -172,6 +173,10 @@ export function Catalogue({ products }: { products: Product[] }) {
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={img}
+                    srcSet={productImageSrcSet(img)}
+                    // The 16:9 banner covers a 4:3 box, so it renders ~1.34x the card
+                    // width; card width follows the grid's auto-fill columns below.
+                    sizes="(max-width: 499px) calc(134vw - 43px), (max-width: 739px) calc(67vw - 29px), (max-width: 979px) calc(45vw - 25px), (max-width: 1219px) calc(34vw - 23px), 320px"
                     alt={p.nameBn}
                     loading="lazy"
                     decoding="async"

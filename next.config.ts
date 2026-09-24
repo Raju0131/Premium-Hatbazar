@@ -1,6 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  experimental: {
+    // The whole stylesheet is ~4 KB (Tailwind), so shipping it inside the HTML
+    // saves a render-blocking round trip for first-time visitors on mobile.
+    inlineCss: true,
+  },
   async headers() {
     return [
       {

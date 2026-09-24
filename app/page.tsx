@@ -12,8 +12,10 @@ import { FAQ } from "@/components/home/FAQ";
 import { CTABand } from "@/components/home/CTABand";
 import { getProducts } from "@/lib/queries";
 
-// Reads products (incl. image URLs) from the DB per request — never prerender at build.
-export const dynamic = "force-dynamic";
+// Prerendered and served from the CDN; the product list is re-read from the DB
+// in the background at most every 5 minutes, and immediately after an admin
+// edit (the admin actions call revalidatePath).
+export const revalidate = 300;
 
 export default async function HomePage() {
   const products = await getProducts();
