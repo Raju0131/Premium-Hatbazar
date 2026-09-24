@@ -26,7 +26,8 @@ function getSteps(status: OrderStatus | null) {
 
 export default function TrackPage({ params }: { params: Promise<{ orderId: string }> }) {
   const { orderId } = use(params);
-  const [trackId, setTrackId] = useState(orderId || "");
+  // /track/search is the empty entry point, so its segment is not an order ID.
+  const [trackId, setTrackId] = useState(orderId && orderId !== "search" ? orderId : "");
   const [tracked, setTracked] = useState(false);
   const [status, setStatus] = useState<OrderStatus | null>(null);
   const [loading, setLoading] = useState(false);
