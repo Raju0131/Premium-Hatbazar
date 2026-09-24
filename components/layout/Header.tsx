@@ -243,7 +243,7 @@ export function Header() {
             />
             <input
               className="input"
-              placeholder="৪২০টি প্রোডাক্ট সার্চ করুন…"
+              placeholder="প্রোডাক্ট সার্চ করুন…"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               aria-label="প্রোডাক্ট সার্চ"

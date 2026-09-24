@@ -59,7 +59,7 @@ export function Footer() {
               color: "var(--color-neutral-500)",
             }}
           >
-            বাংলাদেশের প্রিমিয়াম সাবস্ক্রিপশন স্টোর। ২০২১ থেকে, ১৭,৪০০+ অর্ডার।
+            বাংলাদেশের প্রিমিয়াম সাবস্ক্রিপশন স্টোর।
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 7, marginTop: 14 }}>
             {["বিকাশ", "নগদ", "রকেট", "বাইন্যান্স"].map((m) => (

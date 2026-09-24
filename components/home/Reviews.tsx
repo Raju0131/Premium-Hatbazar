@@ -30,7 +30,7 @@ export function Reviews() {
             color: "var(--color-neutral-100)",
           }}
         >
-          ১,৯০০ রিভিউ, ৪.৯ রেটিং
+          ক্রেতাদের মতামত
         </h2>
         <span style={{ fontSize: "13px", fontWeight: 600, color: "var(--color-neutral-500)" }}>
           ফেসবুক গ্রুপ ও হোয়াটসঅ্যাপ থেকে

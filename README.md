@@ -25,7 +25,7 @@ Customers in Bangladesh browse AI tools, streaming, design, gaming and gift-card
 1, 3 or 12-month term, pay with bKash, Nagad, Rocket or Binance, and follow their order on a
 tracking page. The store owner verifies payments, moves orders through their statuses and manages
 the catalogue from a password-protected admin panel. The interface is in Bengali, with Bengali
-numerals for prices and counts.
+numerals for prices.
 
 ### Highlights
 
@@ -236,6 +236,11 @@ React Three Fiber).
 
 [Portfolio](https://rifatsarkerraju.com) · [GitHub](https://github.com/Raju0131) ·
 [Fiverr](https://www.fiverr.com/iamraju19)
+
+## License
+
+Copyright © 2026 Md. Raju Ahmed. All rights reserved. The code is public so it can be reviewed;
+using it, in whole or in part, needs written permission. See [LICENSE](LICENSE).
 
 ---
 

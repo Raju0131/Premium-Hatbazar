@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { bnNum } from "@/lib/bn";
 import { productIconUrl } from "@/lib/productImage";
-import { ACTIVITY_DATA, type Product } from "@/lib/types";
+import { ACTIVITY_DATA, PAYMENT_METHODS, type Product } from "@/lib/types";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
 
 export function HeroSection({ products }: { products: Product[] }) {
@@ -52,7 +52,7 @@ export function HeroSection({ products }: { products: Product[] }) {
             color: "var(--color-accent-300)",
           }}
         >
-          ১৭,৪০০+ অর্ডার ডেলিভারি হয়েছে
+          বাংলাদেশের প্রিমিয়াম সাবস্ক্রিপশন স্টোর
         </div>
         <h1
           className="resp-h1"
@@ -101,7 +101,7 @@ export function HeroSection({ products }: { products: Product[] }) {
               color: "var(--color-accent-300)",
             }}
           >
-            ৪২০টি প্রোডাক্ট দেখুন →
+            {bnNum(products.length)}টি প্রোডাক্ট দেখুন →
           </Link>
           <Link
             href="/track/search"
@@ -126,10 +126,10 @@ export function HeroSection({ products }: { products: Product[] }) {
         <div style={{ display: "flex", flexWrap: "wrap", gap: 26, marginTop: 28 }}>
           <div>
             <div style={{ fontSize: "22px", fontWeight: 600, color: "var(--color-neutral-100)" }}>
-              ৪.৯<span style={{ color: "var(--color-accent-400)" }}>★</span>
+              {bnNum(PAYMENT_METHODS.length)}টি
             </div>
             <div style={{ marginTop: 5, fontSize: "11.5px", fontWeight: 600, color: "var(--color-neutral-600)" }}>
-              ১,৯০০ রিভিউ
+              পেমেন্ট মাধ্যম
             </div>
           </div>
           <div>

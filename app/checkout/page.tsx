@@ -133,7 +133,7 @@ export default function CheckoutPage() {
                 <div className="resp-pair" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 13, marginTop: 16 }}>
                   <label style={{ display: "grid", gap: 6 }}>
                     <span style={{ fontSize: "12px", fontWeight: 700, color: "var(--color-neutral-400)" }}>নাম</span>
-                    <input className="input" placeholder="Rifat Sarker" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
+                    <input className="input" placeholder="Raju" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
                   </label>
                   <label style={{ display: "grid", gap: 6 }}>
                     <span style={{ fontSize: "12px", fontWeight: 700, color: "var(--color-neutral-400)" }}>হোয়াটসঅ্যাপ নম্বর</span>
