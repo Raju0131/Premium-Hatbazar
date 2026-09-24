@@ -26,6 +26,9 @@ export const metadata: Metadata = {
   description:
     "ChatGPT, Netflix, Canva, Adobe — ১০০% আসল সাবস্ক্রিপশন। ১০ মিনিটেই ডেলিভারি, পুরো টার্মে রিপ্লেসমেন্ট ওয়ারেন্টি। বিকাশ, নগদ, রকেট, বাইন্যান্স।",
   applicationName: "Premium Hatbazar",
+  // Short name under the icon on an iPhone home screen; capable: false keeps it
+  // opening in Safari rather than as a standalone app.
+  appleWebApp: { title: "Premium Hatbazar", capable: false },
   keywords: [
     "Premium Hatbazar",
     "premium subscription",
