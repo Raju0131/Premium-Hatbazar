@@ -1,23 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
+import { isAdminRequest } from "@/lib/adminAuth";
 
 /**
- * Protects /admin with HTTP Basic Auth ONLY when ADMIN_PASSWORD is set.
- * If it is unset (e.g. local dev) the admin stays open. Set ADMIN_PASSWORD
- * (and optionally ADMIN_USER, default "admin") before deploying.
+ * Protects /admin with HTTP Basic Auth (user ADMIN_USER, default "admin";
+ * password ADMIN_PASSWORD). Fails closed: if ADMIN_PASSWORD is not set, the
+ * admin is locked for everyone rather than left open.
  */
 export function proxy(req: NextRequest) {
-  const password = process.env.ADMIN_PASSWORD;
-  if (!password) return NextResponse.next();
+  if (!process.env.ADMIN_PASSWORD) {
+    return new NextResponse("অ্যাডমিন বন্ধ: ADMIN_PASSWORD সেট করা নেই।", { status: 503 });
+  }
 
-  const header = req.headers.get("authorization");
-  if (header?.startsWith("Basic ")) {
-    const decoded = atob(header.slice(6));
-    const sep = decoded.indexOf(":");
-    const user = decoded.slice(0, sep);
-    const pass = decoded.slice(sep + 1);
-    if (user === (process.env.ADMIN_USER || "admin") && pass === password) {
-      return NextResponse.next();
-    }
+  if (isAdminRequest(req.headers.get("authorization"))) {
+    return NextResponse.next();
   }
 
   return new NextResponse("প্রবেশাধিকার প্রয়োজন", {

@@ -7,7 +7,6 @@ import { HeroSection } from "@/components/home/HeroSection";
 import { TrustBand } from "@/components/home/TrustBand";
 import { Catalogue } from "@/components/home/Catalogue";
 import { HowItWorks } from "@/components/home/HowItWorks";
-import { Reviews } from "@/components/home/Reviews";
 import { FAQ } from "@/components/home/FAQ";
 import { CTABand } from "@/components/home/CTABand";
 import { getProducts } from "@/lib/queries";
@@ -36,7 +35,6 @@ export default async function HomePage() {
         <TrustBand />
         <Catalogue products={products} />
         <HowItWorks />
-        <Reviews />
         <FAQ />
         <CTABand />
       </main>

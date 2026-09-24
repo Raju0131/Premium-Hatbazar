@@ -1,8 +1,10 @@
 "use server"
 
+import { randomInt } from "node:crypto"
 import { revalidatePath } from "next/cache"
 import { CartItem, PAYMENT_METHODS } from "@/lib/types"
-import { Prisma, OrderStatus } from "@prisma/client"
+import { isValidEmail } from "@/lib/validate"
+import { Prisma } from "@prisma/client"
 import { prisma } from "@/lib/prisma"
 
 export async function submitOrder(data: {
@@ -16,6 +18,9 @@ export async function submitOrder(data: {
   if (data.items.length === 0) throw new Error("Cart is empty");
   if (!PAYMENT_METHODS.some((m) => m.key === data.paymentMethod)) {
     throw new Error("Unknown payment method");
+  }
+  if (!data.customerName.trim() || !data.phone.trim() || !data.txnId.trim() || !isValidEmail(data.email)) {
+    throw new Error("Missing or invalid customer details");
   }
 
   // Gross = pre-discount. One-time top-ups have no term, so their unitPrice IS the gross.
@@ -33,16 +38,17 @@ export async function submitOrder(data: {
     unitPrice: i.unitPrice,
   }));
 
-  // orderId is a short human-readable code (PH-XXXX) and @unique — retry on the rare collision.
+  // orderId is a short human-readable code (PH-XXXXXX) and @unique — retry on the rare collision.
+  // Six random digits leave a million codes, so they stay hard to guess or run out of.
   for (let attempt = 0; attempt < 5; attempt++) {
-    const orderId = "PH-" + Math.floor(1000 + Math.random() * 9000);
+    const orderId = "PH-" + randomInt(100000, 1000000);
     try {
       const order = await prisma.order.create({
         data: {
           orderId,
           customerName: data.customerName,
           phone: data.phone,
-          email: data.email,
+          email: data.email.trim(),
           paymentMethod: data.paymentMethod,
           txnId: data.txnId,
           subtotal: grossSubtotal,
@@ -64,13 +70,6 @@ export async function submitOrder(data: {
     }
   }
   throw new Error("Could not generate a unique order id");
-}
-
-export async function updateOrderStatus(id: string, status: OrderStatus) {
-  await prisma.order.update({
-    where: { id },
-    data: { status }
-  })
 }
 
 export async function getOrderStatus(orderId: string) {

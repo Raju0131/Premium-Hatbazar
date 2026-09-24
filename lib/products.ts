@@ -12,8 +12,8 @@ export const PRODUCTS: Product[] = [
     monthlyPrice: 1150,
     isOneTime: false,
     unitLabel: "",
-    badge: "ইনস্ট্যান্ট",
-    deliveryEta: "ইনস্ট্যান্ট",
+    badge: "প্রাইভেট",
+    deliveryEta: "১০–৩০ মিনিট",
     stock: 34,
     aboutBn:
       "নিজের মেইলে প্রাইভেট ChatGPT Plus — শেয়ারিং নেই। GPT-5, ফাইল আপলোড, ইমেজ জেনারেশন আর Advanced Voice, সব আনলিমিটেড।",
@@ -21,7 +21,7 @@ export const PRODUCTS: Product[] = [
     specs: [
       { k: "অ্যাকাউন্ট", v: "প্রাইভেট" },
       { k: "শেয়ারিং", v: "নেই" },
-      { k: "ডেলিভারি", v: "ইনস্ট্যান্ট" },
+      { k: "ডেলিভারি", v: "১০–৩০ মিনিট" },
       { k: "রিজিয়ন", v: "গ্লোবাল" },
     ],
     includes: [
@@ -43,7 +43,7 @@ export const PRODUCTS: Product[] = [
     unitLabel: "",
     badge: "−১৮%",
     wasPrice: 1520,
-    deliveryEta: "ইনস্ট্যান্ট",
+    deliveryEta: "১০–৩০ মিনিট",
     stock: 21,
     aboutBn:
       "Claude Pro প্রাইভেট অ্যাকাউন্টে — লম্বা ডকুমেন্ট, কোড আর রিসার্চের জন্য। Projects আর Artifacts সহ পূর্ণ অ্যাক্সেস।",
@@ -51,7 +51,7 @@ export const PRODUCTS: Product[] = [
     specs: [
       { k: "অ্যাকাউন্ট", v: "প্রাইভেট" },
       { k: "শেয়ারিং", v: "নেই" },
-      { k: "ডেলিভারি", v: "ইনস্ট্যান্ট" },
+      { k: "ডেলিভারি", v: "১০–৩০ মিনিট" },
       { k: "রিজিয়ন", v: "গ্লোবাল" },
     ],
     includes: [
@@ -72,7 +72,7 @@ export const PRODUCTS: Product[] = [
     isOneTime: false,
     unitLabel: "",
     badge: "4K UHD",
-    deliveryEta: "≤ ৩০ মিনিট",
+    deliveryEta: "১০–৩০ মিনিট",
     stock: 48,
     aboutBn:
       "৪কে আলট্রা এইচডি Netflix — নিজের আলাদা প্রোফাইল, কেউ ঘাঁটবে না। পিন দিয়ে লক করা থাকবে।",
@@ -81,7 +81,7 @@ export const PRODUCTS: Product[] = [
       { k: "কোয়ালিটি", v: "4K UHD" },
       { k: "প্রোফাইল", v: "নিজের" },
       { k: "স্ক্রিন", v: "একসাথে ১টি" },
-      { k: "ডেলিভারি", v: "≤ ৩০ মিনিট" },
+      { k: "ডেলিভারি", v: "১০–৩০ মিনিট" },
     ],
     includes: [
       "নিজের প্রোফাইল, পিন দিয়ে লক করা",
@@ -101,7 +101,7 @@ export const PRODUCTS: Product[] = [
     isOneTime: false,
     unitLabel: "",
     badge: "হট",
-    deliveryEta: "ইনস্ট্যান্ট",
+    deliveryEta: "১০–৩০ মিনিট",
     stock: 62,
     aboutBn:
       "বিজ্ঞাপন ছাড়া YouTube, ব্যাকগ্রাউন্ড প্লে আর YouTube Music — আপনার নিজের জিমেইলেই ইনভাইট।",
@@ -110,7 +110,7 @@ export const PRODUCTS: Product[] = [
       { k: "ইনভাইট", v: "আপনার জিমেইল" },
       { k: "বিজ্ঞাপন", v: "নেই" },
       { k: "মিউজিক", v: "সহ" },
-      { k: "ডেলিভারি", v: "ইনস্ট্যান্ট" },
+      { k: "ডেলিভারি", v: "১০–৩০ মিনিট" },
     ],
     includes: [
       "আপনার নিজের জিমেইলে ইনভাইট",
@@ -129,8 +129,8 @@ export const PRODUCTS: Product[] = [
     monthlyPrice: 150,
     isOneTime: false,
     unitLabel: "",
-    badge: "ইনস্ট্যান্ট",
-    deliveryEta: "ইনস্ট্যান্ট",
+    badge: "বিজ্ঞাপনহীন",
+    deliveryEta: "১০–৩০ মিনিট",
     stock: 55,
     aboutBn:
       "Spotify Premium ইনডিভিজুয়াল প্ল্যান — নিজের অ্যাকাউন্টেই, প্লেলিস্ট হারাবে না।",
@@ -139,7 +139,7 @@ export const PRODUCTS: Product[] = [
       { k: "প্ল্যান", v: "ইনডিভিজুয়াল" },
       { k: "অ্যাকাউন্ট", v: "আপনার" },
       { k: "কোয়ালিটি", v: "৩২০ kbps" },
-      { k: "ডেলিভারি", v: "ইনস্ট্যান্ট" },
+      { k: "ডেলিভারি", v: "১০–৩০ মিনিট" },
     ],
     includes: [
       "নিজের অ্যাকাউন্টেই আপগ্রেড — প্লেলিস্ট থাকবে",
@@ -159,7 +159,7 @@ export const PRODUCTS: Product[] = [
     isOneTime: false,
     unitLabel: "",
     badge: "সেরা দাম",
-    deliveryEta: "ইনস্ট্যান্ট",
+    deliveryEta: "১০–৩০ মিনিট",
     stock: 71,
     aboutBn:
       "নিজের Canva অ্যাকাউন্টেই Pro — সব প্রিমিয়াম টেমপ্লেট, ব্র্যান্ড কিট আর ব্যাকগ্রাউন্ড রিমুভার।",
@@ -168,7 +168,7 @@ export const PRODUCTS: Product[] = [
       { k: "ইনভাইট", v: "আপনার অ্যাকাউন্ট" },
       { k: "স্টোরেজ", v: "১ টিবি" },
       { k: "টেমপ্লেট", v: "সব প্রো" },
-      { k: "ডেলিভারি", v: "ইনস্ট্যান্ট" },
+      { k: "ডেলিভারি", v: "১০–৩০ মিনিট" },
     ],
     includes: [
       "আপনার নিজের অ্যাকাউন্টে প্রো ইনভাইট",
@@ -188,7 +188,7 @@ export const PRODUCTS: Product[] = [
     isOneTime: false,
     unitLabel: "",
     badge: "সব অ্যাপ",
-    deliveryEta: "≤ ২ ঘণ্টা",
+    deliveryEta: "২ ঘণ্টা পর্যন্ত",
     stock: 12,
     aboutBn:
       "পুরো Adobe Creative Cloud — Photoshop, Illustrator, Premiere Pro সহ ২০+ অ্যাপ, ১০০ জিবি স্টোরেজ।",
@@ -197,7 +197,7 @@ export const PRODUCTS: Product[] = [
       { k: "অ্যাপ", v: "২০+" },
       { k: "স্টোরেজ", v: "১০০ জিবি" },
       { k: "ফন্ট", v: "সহ" },
-      { k: "ডেলিভারি", v: "≤ ২ ঘণ্টা" },
+      { k: "ডেলিভারি", v: "২ ঘণ্টা পর্যন্ত" },
     ],
     includes: [
       "Photoshop, Illustrator, Premiere, After Effects",
@@ -216,8 +216,8 @@ export const PRODUCTS: Product[] = [
     monthlyPrice: 320,
     isOneTime: false,
     unitLabel: "",
-    badge: "ইনস্ট্যান্ট",
-    deliveryEta: "ইনস্ট্যান্ট",
+    badge: "প্রাইভেট",
+    deliveryEta: "১০–৩০ মিনিট",
     stock: 29,
     aboutBn:
       "Grammarly Premium — অ্যাডভান্সড গ্রামার, টোন আর প্লেজিয়ারিজম চেক, নিজের মেইলেই।",
@@ -226,7 +226,7 @@ export const PRODUCTS: Product[] = [
       { k: "অ্যাকাউন্ট", v: "প্রাইভেট" },
       { k: "প্লেজিয়ারিজম", v: "সহ" },
       { k: "টোন", v: "অ্যাডভান্সড" },
-      { k: "ডেলিভারি", v: "ইনস্ট্যান্ট" },
+      { k: "ডেলিভারি", v: "১০–৩০ মিনিট" },
     ],
     includes: [
       "অ্যাডভান্সড গ্রামার আর ক্ল্যারিটি সাজেশন",
@@ -246,16 +246,16 @@ export const PRODUCTS: Product[] = [
     isOneTime: true,
     unitLabel: "/ ১০০ ডায়া",
     badge: "টপ-আপ",
-    deliveryEta: "ইনস্ট্যান্ট",
+    deliveryEta: "১০–৩০ মিনিট",
     stock: 999,
     aboutBn:
-      "UID দিলেই ডায়মন্ড — লগইন লাগবে না, ৫ মিনিটে অ্যাকাউন্টে ঢুকে যাবে।",
+      "UID দিলেই ডায়মন্ড — লগইন লাগবে না, সাধারণত ১০–৩০ মিনিটে অ্যাকাউন্টে ঢুকে যাবে।",
     metaBn: "গেমিং · UID টপ-আপ",
     specs: [
       { k: "পদ্ধতি", v: "UID টপ-আপ" },
       { k: "লগইন", v: "লাগবে না" },
       { k: "রেট", v: "৳৮৫ / ১০০" },
-      { k: "ডেলিভারি", v: "ইনস্ট্যান্ট" },
+      { k: "ডেলিভারি", v: "১০–৩০ মিনিট" },
     ],
     includes: [
       "শুধু UID দিলেই হবে",
@@ -275,16 +275,16 @@ export const PRODUCTS: Product[] = [
     isOneTime: true,
     unitLabel: "/ ৬০ UC",
     badge: "টপ-আপ",
-    deliveryEta: "ইনস্ট্যান্ট",
+    deliveryEta: "১০–৩০ মিনিট",
     stock: 999,
     aboutBn:
-      "PUBG Mobile UC — ক্যারেক্টার আইডি দিলেই ৫ মিনিটে টপ-আপ।",
+      "PUBG Mobile UC — ক্যারেক্টার আইডি দিলেই টপ-আপ, সাধারণত ১০–৩০ মিনিটে।",
     metaBn: "গেমিং · UID টপ-আপ",
     specs: [
       { k: "পদ্ধতি", v: "ক্যারেক্টার আইডি" },
       { k: "লগইন", v: "লাগবে না" },
       { k: "রেট", v: "৳৯২ / ৬০ UC" },
-      { k: "ডেলিভারি", v: "ইনস্ট্যান্ট" },
+      { k: "ডেলিভারি", v: "১০–৩০ মিনিট" },
     ],
     includes: [
       "ক্যারেক্টার আইডি দিলেই টপ-আপ",
@@ -304,7 +304,7 @@ export const PRODUCTS: Product[] = [
     isOneTime: true,
     unitLabel: "/ $১০",
     badge: "গিফট",
-    deliveryEta: "ইনস্ট্যান্ট",
+    deliveryEta: "১০–৩০ মিনিট",
     stock: 40,
     aboutBn:
       "Steam ওয়ালেট কোড — গ্লোবাল রিজিয়ন, স্ক্র্যাচ করে সাথে সাথে রিডিম।",
@@ -313,7 +313,7 @@ export const PRODUCTS: Product[] = [
       { k: "রিজিয়ন", v: "গ্লোবাল" },
       { k: "ধরন", v: "ওয়ালেট কোড" },
       { k: "ভ্যালু", v: "$১০" },
-      { k: "ডেলিভারি", v: "ইনস্ট্যান্ট" },
+      { k: "ডেলিভারি", v: "১০–৩০ মিনিট" },
     ],
     includes: [
       "গ্লোবাল রিজিয়ন কোড",
@@ -333,7 +333,7 @@ export const PRODUCTS: Product[] = [
     isOneTime: true,
     unitLabel: "/ $১০",
     badge: "গিফট",
-    deliveryEta: "ইনস্ট্যান্ট",
+    deliveryEta: "১০–৩০ মিনিট",
     stock: 33,
     aboutBn:
       "Google Play গিফট কার্ড — ইউএস রিজিয়ন কোড, অ্যাপ আর ইন-অ্যাপ পারচেজে চলবে।",
@@ -342,12 +342,12 @@ export const PRODUCTS: Product[] = [
       { k: "রিজিয়ন", v: "ইউএস" },
       { k: "ধরন", v: "গিফট কোড" },
       { k: "ভ্যালু", v: "$১০" },
-      { k: "ডেলিভারি", v: "ইনস্ট্যান্ট" },
+      { k: "ডেলিভারি", v: "১০–৩০ মিনিট" },
     ],
     includes: [
       "ইউএস রিজিয়ন গিফট কোড",
       "অ্যাপ, গেম আর ইন-অ্যাপ পারচেজ",
-      "ইনস্ট্যান্ট হোয়াটসঅ্যাপ ডেলিভারি",
+      "হোয়াটসঅ্যাপে কোড ডেলিভারি",
       "রিডিম না হলে রিপ্লেস",
     ],
   },

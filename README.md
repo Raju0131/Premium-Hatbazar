@@ -58,11 +58,13 @@ numerals for prices.
 - **Term-based pricing** — 1, 3 or 12 months with 10% and 22% discounts, rounded to the nearest
   5 taka (`lib/price.ts`); one-time top-ups such as game currency skip the term.
 - **Cart** kept in the browser, with quantities and a slide-in cart panel.
-- **Checkout** with bKash, Nagad or Rocket (Send Money); the customer enters the transaction ID
-  and gets a short order ID such as `PH-4821` (unique, retried on the rare collision). The server
-  only accepts the payment methods listed in `lib/types.ts`.
-- **Order tracking** at `/track/<order id>` with a four-step timeline: order received → payment
-  verified → account ready → delivered.
+- **Checkout** with bKash, Nagad or Rocket (Send Money); the customer gives a WhatsApp number, an
+  email for delivery and the transaction ID, and gets an order ID such as `PH-482193` (six random
+  digits, retried on the rare collision). The server re-checks these details and only accepts the
+  payment methods listed in `lib/types.ts`.
+- **Order tracking** at `/track/<order id>` with a timeline that follows the order's status:
+  order received → payment verified → delivered on WhatsApp. A cancelled order says so, and the
+  WhatsApp button sends the order ID to the store.
 - **Chat widget** — customer messages land in the admin inbox.
 - **Motion** — Lenis smooth scrolling and GSAP scroll reveals, both switched off for visitors who
   prefer reduced motion.
@@ -74,7 +76,9 @@ numerals for prices.
   customer's tracking page follows along.
 - **Product catalogue** — create, edit and delete products: price, stock, badge, specs and image.
 - **Messages** — the chat inbox.
-- Protected with HTTP Basic Auth (`proxy.ts`) as soon as `ADMIN_PASSWORD` is set.
+- Protected with HTTP Basic Auth (`proxy.ts`), and every admin server action checks the login
+  again. It fails closed: without `ADMIN_PASSWORD` the admin stays locked, so a deployment that is
+  missing the variable (a preview, say) can't expose orders.
 
 ## Performance and quality
 
@@ -132,7 +136,7 @@ erDiagram
     string imageUrl
   }
   Order {
-    string orderId "PH-XXXX"
+    string orderId "PH-XXXXXX"
     string paymentMethod
     string txnId
     int total
@@ -186,7 +190,7 @@ Requires Node.js 20.9 or newer and a PostgreSQL database (Neon works out of the 
 git clone https://github.com/Raju0131/Premium-Hatbazar.git
 cd Premium-Hatbazar
 npm install              # also generates the Prisma client
-cp .env.example .env     # then set DATABASE_URL
+cp .env.example .env     # then set DATABASE_URL and ADMIN_PASSWORD
 npx prisma db push       # create the tables
 npm run seed             # load the 12 catalogue products
 npm run dev              # http://localhost:3000
@@ -201,7 +205,7 @@ npm run dev              # http://localhost:3000
 | Variable | Required | Purpose |
 | --- | --- | --- |
 | `DATABASE_URL` | Yes | PostgreSQL connection string (for Neon, the pooled one from **Connect**). |
-| `ADMIN_PASSWORD` | In production | Turns on HTTP Basic Auth for `/admin`. Without it the admin is open. |
+| `ADMIN_PASSWORD` | For the admin | Password for `/admin` (HTTP Basic Auth). Without it the admin is locked for everyone, locally too. |
 | `ADMIN_USER` | No | Admin username, `admin` by default. |
 | `NEXT_PUBLIC_SITE_URL` | No | Public URL used for metadata and social previews. |
 
@@ -209,7 +213,9 @@ npm run dev              # http://localhost:3000
 
 1. Import the repository in Vercel (framework preset: Next.js). The build runs `prisma generate`
    itself, so no extra build settings are needed.
-2. Add the environment variables above under **Settings → Environment Variables**.
+2. Add the environment variables above under **Settings → Environment Variables**. Preview
+   deployments get the admin only if `ADMIN_PASSWORD` is also set for the Preview environment;
+   otherwise it stays locked there.
 3. Redeploy after adding or changing a variable; variables only apply to new deployments.
 
 The storefront pages are prerendered during the build, reading products from the database.

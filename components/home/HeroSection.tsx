@@ -1,21 +1,9 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import { bnNum } from "@/lib/bn";
 import { productIconUrl } from "@/lib/productImage";
-import { ACTIVITY_DATA, PAYMENT_METHODS, type Product } from "@/lib/types";
-import { ScrollReveal } from "@/components/shared/ScrollReveal";
+import { PAYMENT_METHODS, type Product } from "@/lib/types";
 
 export function HeroSection({ products }: { products: Product[] }) {
-  const [tick, setTick] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => setTick((t) => (t + 1) % ACTIVITY_DATA.length), 5000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const activity = ACTIVITY_DATA[tick];
   const bySlug = (s: string) => products.find((p) => p.slug === s);
   const deal = bySlug("chatgpt-plus");
   const heroPicks = [bySlug("netflix-premium"), bySlug("canva-pro")].filter(
@@ -79,8 +67,8 @@ export function HeroSection({ products }: { products: Product[] }) {
             color: "var(--color-neutral-400)",
           }}
         >
-          ChatGPT, Netflix, Canva, Adobe — ১০০% আসল সাবস্ক্রিপশন। ১০ মিনিটেই ডেলিভারি, পুরো
-          টার্মে রিপ্লেসমেন্ট ওয়ারেন্টি।
+          ChatGPT, Netflix, Canva, Adobe — ১০০% আসল সাবস্ক্রিপশন। সাধারণত ১০–৩০ মিনিটে
+          ডেলিভারি, পুরো টার্মে রিপ্লেসমেন্ট ওয়ারেন্টি।
         </p>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 24 }}>
           <Link
@@ -134,10 +122,10 @@ export function HeroSection({ products }: { products: Product[] }) {
           </div>
           <div>
             <div style={{ fontSize: "22px", fontWeight: 600, color: "var(--color-neutral-100)" }}>
-              &lt;১০ মিনিট
+              ১০–৩০ মিনিট
             </div>
             <div style={{ marginTop: 5, fontSize: "11.5px", fontWeight: 600, color: "var(--color-neutral-600)" }}>
-              গড় ডেলিভারি
+              সাধারণ ডেলিভারি সময়
             </div>
           </div>
           <div>
@@ -221,7 +209,7 @@ export function HeroSection({ products }: { products: Product[] }) {
               ChatGPT Plus — ১ মাস
             </div>
             <div style={{ marginTop: 2, fontSize: "12px", fontWeight: 600, color: "var(--color-accent-300)" }}>
-              প্রাইভেট মেইল · ইনস্ট্যান্ট ডেলিভারি
+              প্রাইভেট মেইল · ১০–৩০ মিনিটে ডেলিভারি
             </div>
           </div>
           <div className="resp-dealprice" style={{ textAlign: "right", flexShrink: 0 }}>
@@ -301,37 +289,6 @@ export function HeroSection({ products }: { products: Product[] }) {
             </div>
           </Link>
         ))}
-
-        {/* Activity line */}
-        <ScrollReveal
-          style={{ gridColumn: "1 / -1" }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 9,
-              padding: "11px 14px",
-              borderRadius: 10,
-              background: "var(--color-surface)",
-              border: "1px dashed var(--color-accent-800)",
-            }}
-          >
-            <span
-              className="animate-ph-pulse"
-              style={{
-                width: 7,
-                height: 7,
-                flexShrink: 0,
-                borderRadius: "50%",
-                background: "var(--color-accent-500)",
-              }}
-            />
-            <span style={{ fontSize: "12.5px", fontWeight: 500, color: "var(--color-neutral-400)" }}>
-              {activity.name} {activity.product} কিনেছে — {activity.time}
-            </span>
-          </div>
-        </ScrollReveal>
       </div>
     </section>
   );

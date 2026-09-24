@@ -1,12 +1,23 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
+import { isAdminRequest } from "@/lib/adminAuth";
 import { OrderStatus, Prisma } from "@prisma/client";
+import { headers } from "next/headers";
 import { revalidatePath } from "next/cache";
+
+// Server actions can be called with a direct POST, so each one checks the
+// admin login itself instead of relying on proxy.ts alone.
+async function requireAdmin() {
+  if (!isAdminRequest((await headers()).get("authorization"))) {
+    throw new Error("Unauthorized");
+  }
+}
 
 /* ── Orders ── */
 
 export async function setOrderStatus(id: string, status: OrderStatus) {
+  await requireAdmin();
   await prisma.order.update({ where: { id }, data: { status } });
   revalidatePath("/admin");
   revalidatePath("/admin/orders");
@@ -16,6 +27,7 @@ export async function setOrderStatus(id: string, status: OrderStatus) {
 /* ── Messages ── */
 
 export async function markMessageRead(id: string, read: boolean) {
+  await requireAdmin();
   await prisma.message.update({ where: { id }, data: { read } });
   revalidatePath("/admin/messages");
   revalidatePath("/admin");
@@ -64,12 +76,14 @@ function toPrismaData(d: ProductFormData) {
 }
 
 export async function createProduct(data: ProductFormData) {
+  await requireAdmin();
   await prisma.product.create({ data: toPrismaData(data) });
   revalidatePath("/admin/products");
   revalidatePath("/");
 }
 
 export async function updateProduct(id: string, data: ProductFormData) {
+  await requireAdmin();
   await prisma.product.update({ where: { id }, data: toPrismaData(data) });
   revalidatePath("/admin/products");
   revalidatePath(`/admin/products/${id}`);
@@ -79,6 +93,7 @@ export async function updateProduct(id: string, data: ProductFormData) {
 }
 
 export async function deleteProduct(id: string): Promise<{ ok: boolean; error?: string }> {
+  await requireAdmin();
   try {
     await prisma.product.delete({ where: { id } });
   } catch (e) {

@@ -37,7 +37,7 @@ export function ProductForm({ product }: { product?: Product }) {
     isOneTime: product?.isOneTime ?? false,
     unitLabel: product?.unitLabel ?? "",
     badge: product?.badge ?? "",
-    deliveryEta: product?.deliveryEta ?? "ইনস্ট্যান্ট",
+    deliveryEta: product?.deliveryEta ?? "১০–৩০ মিনিট",
     stock: product ? String(product.stock) : "0",
     wasPrice: product?.wasPrice != null ? String(product.wasPrice) : "",
     imageUrl: product?.imageUrl ?? "",
@@ -136,11 +136,11 @@ export function ProductForm({ product }: { product?: Product }) {
           <Field label="স্টক">
             <input className="input" type="number" value={f.stock} onChange={set("stock")} placeholder="34" />
           </Field>
-          <Field label="ব্যাজ" hint="যেমন ইনস্ট্যান্ট / −১৮%">
-            <input className="input" value={f.badge} onChange={set("badge")} placeholder="ইনস্ট্যান্ট" />
+          <Field label="ব্যাজ" hint="যেমন প্রাইভেট / −১৮%">
+            <input className="input" value={f.badge} onChange={set("badge")} placeholder="প্রাইভেট" />
           </Field>
           <Field label="ডেলিভারি">
-            <input className="input" value={f.deliveryEta} onChange={set("deliveryEta")} placeholder="ইনস্ট্যান্ট" />
+            <input className="input" value={f.deliveryEta} onChange={set("deliveryEta")} placeholder="১০–৩০ মিনিট" />
           </Field>
           <Field label="ইউনিট লেবেল" hint="one-time হলে, যেমন / ১০০ ডায়া">
             <input className="input" value={f.unitLabel} onChange={set("unitLabel")} placeholder="/ ১০০ ডায়া" />

@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s — Premium Hatbazar",
   },
   description:
-    "ChatGPT, Netflix, Canva, Adobe — ১০০% আসল সাবস্ক্রিপশন। ১০ মিনিটেই ডেলিভারি, পুরো টার্মে রিপ্লেসমেন্ট ওয়ারেন্টি। বিকাশ, নগদ, রকেট।",
+    "ChatGPT, Netflix, Canva, Adobe — ১০০% আসল সাবস্ক্রিপশন। সাধারণত ১০–৩০ মিনিটে ডেলিভারি, পুরো টার্মে রিপ্লেসমেন্ট ওয়ারেন্টি। বিকাশ, নগদ, রকেট।",
   applicationName: "Premium Hatbazar",
   // Short name under the icon on an iPhone home screen; capable: false keeps it
   // opening in Safari rather than as a standalone app.
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Premium Hatbazar — প্রিমিয়াম সাবস্ক্রিপশন স্টোর",
     description:
-      "ChatGPT, Netflix, Canva, Adobe — ১০০% আসল সাবস্ক্রিপশন, ১০ মিনিটে ডেলিভারি।",
+      "ChatGPT, Netflix, Canva, Adobe — ১০০% আসল সাবস্ক্রিপশন, সাধারণত ১০–৩০ মিনিটে ডেলিভারি।",
     siteName: "Premium Hatbazar",
     locale: "bn_BD",
     type: "website",

@@ -4,8 +4,7 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { ChatCircleDots, X, PaperPlaneTilt, WhatsappLogo } from "@phosphor-icons/react/dist/ssr";
 import { sendChatMessage } from "@/app/actions";
-
-const WHATSAPP = "8801315152005";
+import { whatsappHref } from "@/lib/types";
 
 export function ChatWidget() {
   const pathname = usePathname();
@@ -35,7 +34,7 @@ export function ChatWidget() {
     }
   };
 
-  const waHref = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(body || "আসসালামু আলাইকুম, একটা প্রশ্ন ছিল —")}`;
+  const waHref = whatsappHref(body || "আসসালামু আলাইকুম, একটা প্রশ্ন ছিল —");
 
   return (
     <>
@@ -67,7 +66,7 @@ export function ChatWidget() {
               </span>
               <div>
                 <div style={{ fontSize: "14px", fontWeight: 700, color: "var(--color-neutral-100)" }}>Premium Hatbazar সাপোর্ট</div>
-                <div style={{ fontSize: "11px", fontWeight: 600, color: "var(--color-accent-200)" }}>গড় রিপ্লাই ৪ মিনিট</div>
+                <div style={{ fontSize: "11px", fontWeight: 600, color: "var(--color-accent-200)" }}>উত্তর আসবে হোয়াটসঅ্যাপে</div>
               </div>
             </div>
             <button onClick={() => setOpen(false)} aria-label="চ্যাট বন্ধ করুন" style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 30, height: 30, border: 0, borderRadius: 8, background: "rgba(0,0,0,.25)", color: "var(--color-neutral-100)", cursor: "pointer" }}>

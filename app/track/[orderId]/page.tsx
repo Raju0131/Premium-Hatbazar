@@ -9,15 +9,18 @@ import { Toast } from "@/components/shared/Toast";
 import { getOrderStatus } from "@/app/actions";
 import { use } from "react";
 import type { OrderStatus } from "@prisma/client";
+import { whatsappHref } from "@/lib/types";
+import { ORDER_STATUS_BN } from "@/lib/orderStatus";
 
+// One step per order status the admin can set (PENDING → VERIFIED → DELIVERED);
+// a cancelled order gets a message instead of a timeline.
 function getSteps(status: OrderStatus | null) {
-  if (!status) return [];
-  const level = status === "CANCELLED" ? 0 : status === "PENDING" ? 1 : status === "VERIFIED" ? 2 : 4;
+  if (!status || status === "CANCELLED") return [];
+  const level = status === "PENDING" ? 1 : status === "VERIFIED" ? 2 : 3;
   return [
     { t: "অর্ডার গ্রহণ", time: "", done: level >= 1 },
     { t: "পেমেন্ট ভেরিফাই", time: "", done: level >= 2 },
-    { t: "অ্যাকাউন্ট রেডি", time: "", done: level >= 3 },
-    { t: "হোয়াটসঅ্যাপে ডেলিভারি", time: "", done: level >= 4 },
+    { t: "হোয়াটসঅ্যাপে ডেলিভারি", time: "", done: level >= 3 },
   ];
 }
 
@@ -42,7 +45,7 @@ export default function TrackPage({ params }: { params: Promise<{ orderId: strin
     }
   }, []);
 
-  // Auto-track when landed on /track/PH-XXXX (skip the bare /track/search entry point).
+  // Auto-track when landed on /track/PH-XXXXXX (skip the bare /track/search entry point).
   useEffect(() => {
     if (orderId && orderId !== "search") {
       handleTrack(orderId);
@@ -66,7 +69,7 @@ export default function TrackPage({ params }: { params: Promise<{ orderId: strin
               অর্ডার আইডি দিলেই লাইভ স্ট্যাটাস দেখবেন। হোয়াটসঅ্যাপেও আপডেট পাঠাই।
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 9, marginTop: 22, maxWidth: 440 }}>
-              <input className="input" placeholder="PH-8241" value={trackId} onChange={(e) => setTrackId(e.target.value)} style={{ flex: 1, minWidth: 170, height: 44, fontWeight: 600 }} />
+              <input className="input" placeholder="PH-824136" value={trackId} onChange={(e) => setTrackId(e.target.value)} style={{ flex: 1, minWidth: 170, height: 44, fontWeight: 600 }} />
               <button disabled={loading} onClick={() => handleTrack(trackId)} style={{ height: 44, padding: "0 20px", whiteSpace: "nowrap", border: "1px solid var(--color-accent-800)", borderRadius: 9, background: "transparent", fontFamily: "inherit", fontSize: "13.5px", fontWeight: 600, color: "var(--color-accent-300)", cursor: loading ? "not-allowed" : "pointer" }}>
                 {loading ? "..." : "ট্র্যাক"}
               </button>
@@ -81,11 +84,13 @@ export default function TrackPage({ params }: { params: Promise<{ orderId: strin
                   </div>
                   <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "7px 13px", borderRadius: 20, background: "var(--color-accent-900)", border: "1px solid var(--color-accent-800)" }}>
                     {status !== "DELIVERED" && status !== "CANCELLED" && <span className="animate-ph-pulse" style={{ width: 7, height: 7, borderRadius: "50%", background: "var(--color-accent-400)" }} />}
-                    <span style={{ fontSize: "12.5px", fontWeight: 700, color: "var(--color-accent-200)" }}>{status || "Not Found"}</span>
+                    <span style={{ fontSize: "12.5px", fontWeight: 700, color: "var(--color-accent-200)" }}>{status ? ORDER_STATUS_BN[status] : "পাওয়া যায়নি"}</span>
                   </div>
                 </div>
                 <div style={{ display: "grid", gap: 0, marginTop: 18 }}>
-                  {status ? steps.map((s, i) => {
+                  {status === "CANCELLED" ? (
+                    <div style={{ fontSize: "14px", color: "var(--color-neutral-400)" }}>এই অর্ডারটি বাতিল হয়েছে। কিছু জানার থাকলে হোয়াটসঅ্যাপ করুন।</div>
+                  ) : status ? steps.map((s, i) => {
                     const isLast = i === steps.length - 1;
                     return (
                       <div key={i} style={{ display: "grid", gridTemplateColumns: "28px minmax(0,1fr)", gap: 14 }}>
@@ -119,19 +124,19 @@ export default function TrackPage({ params }: { params: Promise<{ orderId: strin
           <div className="card" style={{ gap: 0, padding: 22, border: "1px solid var(--color-neutral-800)" }}>
             <h2 style={{ margin: 0, fontFamily: "inherit", fontSize: "17px", fontWeight: 600, color: "var(--color-neutral-100)" }}>দেরি হচ্ছে?</h2>
             <p style={{ marginTop: 9, fontFamily: "var(--font-body)", fontSize: "14.5px", lineHeight: 1.7, color: "var(--color-neutral-400)" }}>
-              বেশিরভাগ অর্ডার ১০ মিনিটে হয়ে যায়। রাশ আওয়ারে ৩০ মিনিট পর্যন্ত লাগতে পারে। ১ ঘণ্টা পেরিয়ে গেলে সরাসরি হোয়াটসঅ্যাপ করুন — অর্ডার আইডিটা সাথে দিন।
+              সাধারণত ১০–৩০ মিনিটে অর্ডার হয়ে যায়। ১ ঘণ্টা পেরিয়ে গেলে সরাসরি হোয়াটসঅ্যাপ করুন — অর্ডার আইডিটা সাথে দিন।
             </p>
-            <a href="#order" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6, height: 44, marginTop: 16, borderRadius: 9, border: "1px solid var(--color-accent-800)", fontSize: "13.5px", fontWeight: 600, color: "var(--color-accent-300)" }}>
+            <a
+              href={whatsappHref(trackId.trim() ? `অর্ডার ${trackId.trim()} নিয়ে জানতে চাই` : "আসসালামু আলাইকুম, অর্ডার নিয়ে জানতে চাই")}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6, height: 44, marginTop: 16, borderRadius: 9, border: "1px solid var(--color-accent-800)", fontSize: "13.5px", fontWeight: 600, color: "var(--color-accent-300)" }}>
               হোয়াটসঅ্যাপ — +৮৮০ ১৩১৫ ১৫২০০৫
             </a>
             <div style={{ display: "grid", gap: 10, marginTop: 18, paddingTop: 16, borderTop: "1px solid var(--color-divider)" }}>
               <div style={{ display: "flex", justifyContent: "space-between", fontSize: "12.5px", fontWeight: 600 }}>
-                <span style={{ color: "var(--color-neutral-500)" }}>গড় ডেলিভারি</span>
-                <span style={{ color: "var(--color-neutral-200)" }}>৮ মিনিট</span>
-              </div>
-              <div style={{ display: "flex", justifyContent: "space-between", fontSize: "12.5px", fontWeight: 600 }}>
-                <span style={{ color: "var(--color-neutral-500)" }}>রিপ্লাই টাইম</span>
-                <span style={{ color: "var(--color-neutral-200)" }}>৪ মিনিট</span>
+                <span style={{ color: "var(--color-neutral-500)" }}>সাধারণ ডেলিভারি সময়</span>
+                <span style={{ color: "var(--color-neutral-200)" }}>১০–৩০ মিনিট</span>
               </div>
               <div style={{ display: "flex", justifyContent: "space-between", fontSize: "12.5px", fontWeight: 600 }}>
                 <span style={{ color: "var(--color-neutral-500)" }}>সাপোর্ট আওয়ার</span>

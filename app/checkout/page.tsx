@@ -6,6 +6,7 @@ import { useCart } from "@/components/providers/CartProvider";
 import { PAYMENT_METHODS } from "@/lib/types";
 import { displayTermLabel } from "@/lib/price";
 import { bnNum } from "@/lib/bn";
+import { isValidEmail } from "@/lib/validate";
 import { SaleStrip } from "@/components/layout/SaleStrip";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -35,8 +36,12 @@ export default function CheckoutPage() {
   const [loading, setLoading] = useState(false);
 
   const placeOrder = async () => {
-    if (!form.name || !form.phone || !form.txn) {
+    if (!form.name || !form.phone || !form.email || !form.txn) {
       showToast("সব তথ্য পূরণ করুন");
+      return;
+    }
+    if (!isValidEmail(form.email)) {
+      showToast("সঠিক ইমেইল ঠিকানা দিন");
       return;
     }
     setLoading(true);
@@ -78,7 +83,7 @@ export default function CheckoutPage() {
             অর্ডার <span style={{ color: "var(--color-accent-400)" }}>কনফার্ম!</span>
           </h1>
           <p style={{ marginTop: 10, fontSize: "14.5px", fontWeight: 500, color: "var(--color-neutral-500)" }}>
-            অর্ডার আইডি: <strong style={{ color: "var(--color-accent-300)" }}>{orderId}</strong> — হোয়াটসঅ্যাপে ১০ মিনিটের মধ্যে অ্যাকাউন্ট ডিটেইলস পাবেন।
+            অর্ডার আইডি: <strong style={{ color: "var(--color-accent-300)" }}>{orderId}</strong> — সাধারণত ১০–৩০ মিনিটের মধ্যে হোয়াটসঅ্যাপে অ্যাকাউন্ট ডিটেইলস পাবেন।
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 10, justifyContent: "center", marginTop: 24 }}>
             <Link href={`/track/${orderId}`} style={{ display: "flex", alignItems: "center", justifyContent: "center", height: 46, padding: "0 22px", borderRadius: 10, border: "1px solid var(--color-accent-800)", fontSize: "14.5px", fontWeight: 600, color: "var(--color-accent-300)" }}>
@@ -109,7 +114,7 @@ export default function CheckoutPage() {
           প্রায় <span style={{ color: "var(--color-accent-400)" }}>আপনারই।</span>
         </h1>
         <p style={{ marginTop: 10, fontSize: "14.5px", fontWeight: 500, color: "var(--color-neutral-500)" }}>
-          পেমেন্ট করার পর ট্রানজেকশন আইডি দিন — ১০ মিনিটে হোয়াটসঅ্যাপে অ্যাকাউন্ট চলে আসবে।
+          পেমেন্ট করার পর ট্রানজেকশন আইডি দিন — সাধারণত ১০–৩০ মিনিটে হোয়াটসঅ্যাপে অ্যাকাউন্ট চলে আসবে।
         </p>
 
         {cartEmpty ? (
@@ -142,7 +147,7 @@ export default function CheckoutPage() {
                 </div>
                 <label style={{ display: "grid", gap: 6, marginTop: 13 }}>
                   <span style={{ fontSize: "12px", fontWeight: 700, color: "var(--color-neutral-400)" }}>ইমেইল (ডেলিভারি এই মেইলে যাবে)</span>
-                  <input className="input" placeholder="you@gmail.com" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
+                  <input className="input" type="email" placeholder="you@gmail.com" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
                 </label>
               </div>
 

@@ -2,6 +2,7 @@
 
 import { useCart } from "@/components/providers/CartProvider";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
+import { whatsappHref } from "@/lib/types";
 
 export function CTABand() {
   const { openCart } = useCart();
@@ -41,7 +42,7 @@ export function CTABand() {
                 textWrap: "balance",
               }}
             >
-              আজই অর্ডার করুন — ১০ মিনিটে অ্যাকাউন্ট।
+              আজই অর্ডার করুন — সাধারণত ১০–৩০ মিনিটে অ্যাকাউন্ট।
             </h2>
             <p
               style={{
@@ -79,7 +80,9 @@ export function CTABand() {
               চেকআউট করুন
             </button>
             <a
-              href="#top"
+              href={whatsappHref("আসসালামু আলাইকুম, অর্ডার করতে চাই —")}
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
                 display: "flex",
                 alignItems: "center",

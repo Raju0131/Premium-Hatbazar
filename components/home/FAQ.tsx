@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { FAQ_DATA } from "@/lib/types";
+import { FAQ_DATA, whatsappHref } from "@/lib/types";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
 
 export function FAQ() {
@@ -33,10 +33,12 @@ export function FAQ() {
           সাধারণ প্রশ্ন
         </h2>
         <p style={{ marginTop: 9, fontSize: "14px", fontWeight: 500, color: "var(--color-neutral-500)" }}>
-          এখানে উত্তর না পেলে হোয়াটসঅ্যাপ করুন — ৪ মিনিটে রিপ্লাই।
+          এখানে উত্তর না পেলে হোয়াটসঅ্যাপ করুন।
         </p>
         <a
-          href="#order"
+          href={whatsappHref("আসসালামু আলাইকুম, একটা প্রশ্ন ছিল —")}
+          target="_blank"
+          rel="noopener noreferrer"
           style={{
             display: "inline-flex",
             alignItems: "center",

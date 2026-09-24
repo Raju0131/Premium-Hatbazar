@@ -254,7 +254,6 @@ export function Header() {
             {[
               { href: "/#catalogue", label: "প্রোডাক্ট" },
               { href: "/#how", label: "কিভাবে কাজ করে" },
-              { href: "/#reviews", label: "রিভিউ" },
               { href: "/#faq", label: "সাধারণ প্রশ্ন" },
               { href: "/track/search", label: "অর্ডার ট্র্যাক" },
             ].map((l) => (

@@ -14,7 +14,7 @@ export function HowItWorks() {
     },
     {
       num: "03",
-      title: "১০ মিনিটে লগইন পান",
+      title: "১০–৩০ মিনিটে লগইন পান",
       desc: "হোয়াটসঅ্যাপে অ্যাকাউন্ট ডিটেইলস চলে আসবে। অর্ডার আইডি দিয়ে ট্র্যাক করতে পারবেন।",
     },
   ];
@@ -41,7 +41,7 @@ export function HowItWorks() {
         কিভাবে কাজ করে
       </h2>
       <p style={{ marginTop: 7, fontSize: "14px", fontWeight: 500, color: "var(--color-neutral-500)" }}>
-        অর্ডার থেকে ডেলিভারি — তিনটি ধাপ, ১০ মিনিট।
+        অর্ডার থেকে ডেলিভারি — তিনটি ধাপ, সাধারণত ১০–৩০ মিনিট।
       </p>
 
       <ScrollReveal
