@@ -8,7 +8,7 @@ import { ChatWidget } from "@/components/shared/ChatWidget";
 
 // Anek Bangla covers both the Bengali and Latin text on every page. It used to
 // be paired with Plus Jakarta Sans and Hind Siliguri as fallbacks, but no glyph
-// ever rendered with them while their ~250 KB of preloaded files held up the
+// ever rendered with them while their ~210 KB of preloaded files held up the
 // first paint on mobile, so they were dropped.
 const anekBangla = Anek_Bangla({
   subsets: ["bengali", "latin"],
