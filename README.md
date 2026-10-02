@@ -61,7 +61,8 @@ numerals for prices.
 - **Checkout** with bKash, Nagad or Rocket (Send Money); the customer gives a WhatsApp number, an
   email for delivery and the transaction ID, and gets an order ID such as `PH-482193` (six random
   digits, retried on the rare collision). The server re-checks these details and only accepts the
-  payment methods listed in `lib/types.ts`.
+  payment methods listed in `lib/types.ts`. The server re-prices every line from the database, so
+  prices sent by the browser are never trusted.
 - **Order tracking** at `/track/<order id>` with a timeline that follows the order's status:
   order received → payment verified → delivered on WhatsApp. A cancelled order says so, and the
   WhatsApp button sends the order ID to the store.
